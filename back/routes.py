@@ -4,12 +4,10 @@ import json
 import services.generate_image
 import services.generate_sound
 import services.generate_tags
-import services.generate_video
 
 generator_sound = services.generate_sound.MusicGenerator()
 generator_image = services.generate_image.ImageGenerator()
 generator_tags = services.generate_tags.TagsGenerator()
-editor = services.generate_video.VideoEditor()
 
 def get_document(reqt, field):
     request_json = reqt.get_json()

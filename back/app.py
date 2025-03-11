@@ -7,7 +7,6 @@ app = Flask(__name__)
 CORS(app, resources={
         r"/generate/image/prompt": {"origins": "*"},
         r"/generate/image/image": {"origins": "*"},
-        r"/generate/image/animation": {"origins": "*"},
         r"/generate/sound": {"origins": "*"},
         r"/generate/tags": {"origins": "*"}
     },
