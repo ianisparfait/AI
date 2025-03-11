@@ -1,0 +1,30 @@
+services:
+  api:
+    build: ./back
+    container_name: service-back
+    working_dir: /var/www/
+    volumes:
+      - ./back:/var/www
+    ports:
+      - 5000:5000
+    environment:
+      - FLASK_ENV=production
+      - FLASK_APP=app.py
+      - FLASK_RUN_HOST=0.0.0.0
+      - PYTORCH_CUDA_ALLOC_CONF=max_split_size_mb:512
+      - NVIDIA_VISIBLE_DEVICES=all
+      - CUDA_VISIBLE_DEVICES=0
+    networks:
+      - ai-network
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+    restart: unless-stopped
+
+networks:
+  ai-network:
+    driver: bridge
