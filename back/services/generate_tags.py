@@ -64,7 +64,6 @@ class TagsGenerator:
 
             generated_text = self.tokenizer.decode(outputs[0], skip_special_tokens=True).strip()
 
-            # 🧼 **Nettoyage des tags**
             tags = [tag.strip().lower() for tag in generated_text.split(',')]
             tags = [tag for tag in tags if 2 < len(tag) <= 30]
             
